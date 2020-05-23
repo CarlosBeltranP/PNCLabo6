@@ -23,17 +23,21 @@
 			    <label>NIT:</label><br>
 			    <input type="number" th:field="*{nit}" placeholder=" "><br> 
 			    <span th:errors="*{nit}" style="color: #E81505"></span><br><br>
-				
-				
-			     <label>Importancia:</label>
-			    <select th:field="*{importancia.codigo}">
-	  			<option th:each="importancia : ${importancias}" 
-	  					th:value=${importancia.codigo} 
-	  					th:text="${importancia.importancia}">
-	  			</option>
-	  			</select><br><br>
-		
-				<div class="buttom-container">
+
+				<div class="select-container">
+					<label>Importancia:</label> 
+					<div class="caja">
+						<select th:field="*{importancia.codigo}">
+							<option th:each="importancia : ${importancias}"
+								th:value=${importancia.codigo}
+								th:text="${importancia.importancia}">
+							</option>
+						</select>
+					</div>
+				</div>
+				<br> <br>
+
+			<div class="buttom-container">
 					<input class="add-buttom" type="submit"  value="Agregar">
 			    </div>
 			</form>

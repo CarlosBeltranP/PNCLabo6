@@ -54,19 +54,35 @@ Logger log = Logger.getLogger(MainController.class.getName());
 	
 	//********* Guardar estudiante en la base de datos *********
 	@PostMapping("/guardar")
-	public ModelAndView guardar(@ModelAttribute Contribuyente contribuyente) {
+	public ModelAndView guardar(@Valid @ModelAttribute Contribuyente contribuyente, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
-		ZoneId defaultZoneId = ZoneId.systemDefault();
-		LocalDate today = LocalDate.now();
-		 
-		Date date = Date.from(today.atStartOfDay(defaultZoneId).toInstant());
-		contribuyente.setFechaIngreso(date);
-		contribuyente.getFechaIngreso();
-		
-		contribuyenteService.save(contribuyente);
-		
-		mav.setViewName("redirect:/inicio");
+		if(result.hasErrors()) { 
+			List<Importancia> importancias= null;
+			try {
+				importancias =  importanciaService.findAll();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			mav.addObject("importancias",importancias);
+			mav.setViewName("index");
+			log.info("Error encontrado");
+		}else {	
+			try {
+				log.info("Estudiante agregado");
+				ZoneId defaultZoneId = ZoneId.systemDefault();
+				LocalDate today = LocalDate.now();
+				Date date = Date.from(today.atStartOfDay(defaultZoneId).toInstant());
+				contribuyente.setFechaIngreso(date);
+				contribuyente.getFechaIngreso();
+			
+				contribuyenteService.save(contribuyente);
+			}catch(Exception ex) {
+				log.info("No se pudo agregar");
+			}
+			mav.setViewName("index");
+		}
 		return mav;
+	
 	}
 	
 	@GetMapping("/listado")

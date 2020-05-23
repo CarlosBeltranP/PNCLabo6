@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(schema="public", name="contribuyente")
@@ -26,12 +28,17 @@ public class Contribuyente {
 	@SequenceGenerator(name = "contribuyente_c_contribuyente_seq", sequenceName = "public.contribuyente_c_contribuyente_seq", allocationSize = 1)
 	private Integer c_codigo;
 	
+	@Size(message="El nombre no debe tener mas de 30 caracteres", max = 30)
+	@NotEmpty(message="Este campo no puede estar vacío") 
 	@Column(name="s_nombre")
 	private String nombre;
 	
+	@Size(message="El apellido no debe tener mas de 30 caracteres", max = 30)
+	@NotEmpty(message="Este campo no puede estar vacío") 
 	@Column(name="s_apellido")
 	private String apellido;
 	
+	@Size(message="El NIT debe tener 14 digitos", min=14, max=14)
 	@Column(name="s_nit")
 	private String nit;
 	
@@ -44,7 +51,6 @@ public class Contribuyente {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "c_importancia")
 	private Importancia importancia;
-	
 	
 	
 	public Importancia getImportancia() {
