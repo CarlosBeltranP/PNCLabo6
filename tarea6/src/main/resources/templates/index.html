@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registro</title>
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+	<h1>Registrar contribuyente</h1>
+		<div class="form-container">
+			<form th:action="@{/guardar}" th:object="${contribuyente}" method="post">
+			
+				<input type="hidden"  th:field="*{c_codigo}" >
+	
+		    	<label>Nombre:</label><br>
+			    <input type="text" th:field="*{nombre}" placeholder=" "><br> 
+			    <span th:errors="*{nombre}" style="color: #E81505"></span><br><br>
+		
+			    <label>Apellido:</label><br>
+			    <input type="text" th:field="*{apellido}" placeholder=" "> <br>
+			    <span th:errors="*{apellido}" style="color: #E81505"></span><br><br>
+		
+			    <label>NIT:</label><br>
+			    <input type="number" th:field="*{nit}" placeholder=" "><br> 
+			    <span th:errors="*{nit}" style="color: #E81505"></span><br><br>
+				
+				
+			     <label>Importancia:</label>
+			    <select th:field="*{importancia.codigo}">
+	  			<option th:each="importancia : ${importancias}" 
+	  					th:value=${importancia.codigo} 
+	  					th:text="${importancia.importancia}">
+	  			</option>
+	  			</select><br><br>
+		
+				<div class="buttom-container">
+					<input class="add-buttom" type="submit"  value="Agregar">
+			    </div>
+			</form>
+			
+			<br/>
+			<div class="buttom-container">
+				<a th:href="@{/listado}">
+					<input class="back-buttom" type="submit"  value="Listado de contribuyentes" >
+				</a>
+			 </div>
+		</div>
+
+</body>
+</html>

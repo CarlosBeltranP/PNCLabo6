@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th=http://www.thymeleaf.org>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="table-container" align="center">
+		<h1>Listado</h1>
+		<br/>
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Codigo</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>NIT</th>
+					<th>Importancia</th>
+					<th>Fecha Ingreso</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="contribuyente, row:${contribuyentes}">
+					<td th:text="${contribuyente.c_codigo}">Codigo</td>
+					<td th:text="${contribuyente.nombre}">Nombre</td>
+					<td th:text="${contribuyente.apellido}">Apellido</td>
+					<td th:text="${contribuyente.nit}">Carnet</td>
+					<td th:text="${contribuyente.importancia.importancia}">Importancia</td>
+					<td th:text="${contribuyente.fechaDelegate}">Fecha Ingreso</td>
+					<td>
+						<a th:href="@{/eliminar/} + ${contribuyente.c_codigo}">
+							<input class="delete-buttom" type="submit"  value="Eliminar" >
+						</a>
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<div class="buttom-container">
+			<a th:href="@{/inicio}">
+				<input class="back-buttom" type="submit"  value="Agregar Contribuyente" >
+			</a>
+		</div>
+	</div>	
+
+</body>
+</html>
