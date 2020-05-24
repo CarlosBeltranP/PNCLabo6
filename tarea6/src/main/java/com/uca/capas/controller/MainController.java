@@ -79,7 +79,8 @@ Logger log = Logger.getLogger(MainController.class.getName());
 			}catch(Exception ex) {
 				log.info("No se pudo agregar");
 			}
-			mav.setViewName("index");
+			mav.addObject("message", "Contribuyente guardado con éxito");
+			mav.setViewName("ingresado");
 		}
 		return mav;
 	

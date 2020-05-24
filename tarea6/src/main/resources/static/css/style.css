@@ -243,3 +243,26 @@ select:focus{ outline: none;}
 	right:0px;	
 	pointer-events: none;
 }
+
+.added-container {
+	margin: auto;
+}
+
+p {
+	margin-top: 100px;
+	font: 18px/30px Helvetica, Verdana, sans-serif;
+}
+
+.added-container a{
+	text-decoration: none;
+}
+
+.added-container .back-buttom {
+	margin: auto;
+	width: 200px;
+	height: 40px;
+	padding: 10px; border : 0;
+	background-color: #079CFF;
+	color: #FFFFFF;
+	cursor: pointer;
+	border: 0;
