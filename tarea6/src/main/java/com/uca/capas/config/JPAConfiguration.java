@@ -21,11 +21,9 @@ public class JPAConfiguration {
 		em.setDataSource(dataSource());
 		em.setPersistenceUnitName("capas");
 		em.setPackagesToScan("com.uca.capas.domain");
-		
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		em.setJpaProperties(hibernateProperties());
-
 		return em;
 		
 	}
@@ -35,7 +33,7 @@ public class JPAConfiguration {
 		
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/CONTRIBUYENTE2");
+		dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/CONTRIBUYENTE");
 		dataSource.setUsername("postgres");
 		dataSource.setPassword("root");
 		

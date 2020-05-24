@@ -33,7 +33,7 @@ public class ContribuyenteDAOImpl implements ContribuyenteDAO {
 		Contribuyente c = entityManager.find(Contribuyente.class, codigo);
 		return c;
 	}
-	//Guardar estudiante
+	//Guardar contribuyente
 	@Override
 	@Transactional
 	public void save(Contribuyente c) throws DataAccessException {
@@ -47,7 +47,7 @@ public class ContribuyenteDAOImpl implements ContribuyenteDAO {
 		
 	}
 	
-	//Eliminar estudiante
+	//Eliminar contribuyente
 	@Override
 	@Transactional
 	public int delete(Contribuyente c) throws DataAccessException {

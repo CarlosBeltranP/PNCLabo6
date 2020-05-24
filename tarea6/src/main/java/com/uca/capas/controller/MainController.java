@@ -2,12 +2,8 @@ package com.uca.capas.controller;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.TimeZone;
 import java.util.logging.Logger;
 
 import javax.validation.Valid;
@@ -22,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.uca.capas.dao.ContribuyenteDAO;
 import com.uca.capas.domain.Contribuyente;
 import com.uca.capas.domain.Importancia;
 import com.uca.capas.service.ContribuyenteService;
@@ -52,7 +47,7 @@ Logger log = Logger.getLogger(MainController.class.getName());
 		return mav;
 	}
 	
-	//********* Guardar estudiante en la base de datos *********
+	//********* Guardar contribuyente en la base de datos *********
 	@PostMapping("/guardar")
 	public ModelAndView guardar(@Valid @ModelAttribute Contribuyente contribuyente, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
@@ -99,7 +94,7 @@ Logger log = Logger.getLogger(MainController.class.getName());
 	}
 
 	
-	//********* Elimina studiante por código*********
+	//********* Elimina contribuyente por código*********
 	@RequestMapping(value = "/eliminar/{codigoContribuyente}")
 	public ModelAndView eliminar(@PathVariable int codigoContribuyente) {
 		ModelAndView mav = new ModelAndView();

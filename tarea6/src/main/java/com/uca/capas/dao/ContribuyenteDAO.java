@@ -8,10 +8,11 @@ import com.uca.capas.domain.Contribuyente;
 
 
 public interface ContribuyenteDAO {
-public List<Contribuyente> findAll() throws DataAccessException;
-	
+	public List<Contribuyente> findAll() throws DataAccessException;
+
 	public Contribuyente findOne(Integer codigo) throws DataAccessException;
-	
+
 	public void save(Contribuyente c) throws DataAccessException;
+
 	int delete(Contribuyente c) throws DataAccessException;
 }
