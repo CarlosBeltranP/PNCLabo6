@@ -243,7 +243,7 @@ select:focus {
 	margin: 100px;
 }
 
-.added-container a{
+.added-container h1{
 		font: 18px/30px Helvetica, Verdana, sans-serif;
 }
 
@@ -259,3 +259,4 @@ select:focus {
 	color: #FFFFFF;
 	cursor: pointer;
 	border: 0;
+}
