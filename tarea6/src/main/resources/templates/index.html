@@ -29,7 +29,7 @@
 					<div class="caja">
 						<select th:field="*{importancia.codigo}">
 							<option th:each="importancia : ${importancias}"
-								th:value=${importancia.codigo}
+								th:value="${importancia.codigo}"
 								th:text="${importancia.importancia}">
 							</option>
 						</select>

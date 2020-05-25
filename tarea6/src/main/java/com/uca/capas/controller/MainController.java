@@ -55,11 +55,12 @@ Logger log = Logger.getLogger(MainController.class.getName());
 			List<Importancia> importancias= null;
 			try {
 				importancias =  importanciaService.findAll();
+				mav.addObject("importancias",importancias);
+				mav.setViewName("index");
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			mav.addObject("importancias",importancias);
-			mav.setViewName("index");
+			
 			log.info("Error encontrado");
 		}else {	
 			try {
@@ -71,11 +72,12 @@ Logger log = Logger.getLogger(MainController.class.getName());
 				contribuyente.getFechaIngreso();
 			
 				contribuyenteService.save(contribuyente);
+				mav.addObject("message", "Contribuyente guardado con éxito");
+				mav.setViewName("ingresado");
 			}catch(Exception ex) {
 				log.info("No se pudo agregar");
 			}
-			mav.addObject("message", "Contribuyente guardado con éxito");
-			mav.setViewName("ingresado");
+			
 		}
 		return mav;
 	
